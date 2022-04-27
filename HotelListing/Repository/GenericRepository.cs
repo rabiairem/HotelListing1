@@ -1,6 +1,7 @@
 ﻿using HotelListing.Data;
 using HotelListing.IRepository;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 
 namespace HotelListing.Repository
@@ -27,7 +28,7 @@ namespace HotelListing.Repository
 
         public async Task<T> Get(Expression<Func<T, bool>> expression, List<string> includes = null)
         {
-            var query = db;
+            IQueryable<T> query = db;
 
             if (includes != null)
                 foreach (var include in includes)

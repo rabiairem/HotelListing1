@@ -1,11 +1,11 @@
-﻿using System.Linq.Expressions;
+﻿using Microsoft.EntityFrameworkCore.Query;
+using System.Linq.Expressions;
 
 namespace HotelListing.IRepository
 {
     public interface IGenericRepository<T> where T : class
     {
-        Task<IList<T>> GetAll(
-            Expression<Func<T, bool>> expression = null,
+        Task<IList<T>> GetAll(Expression<Func<T, bool>> expression = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             List<string> includes = null);
         Task<T> Get(Expression<Func<T, bool>> expression, List<string> includes = null);
