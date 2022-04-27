@@ -1,3 +1,4 @@
+using HotelListing.Configurations;
 using HotelListing.Data;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -27,6 +28,7 @@ builder.Services.AddCors(o =>
        AllowAnyMethod().
        AllowAnyHeader());
 });
+builder.Services.AddAutoMapper(typeof(MapperInitializer));
 
 var app = builder.Build();
 
