@@ -2,7 +2,7 @@
 
 namespace HotelListing.Models
 {
-    public class CreateCountyDTO
+    public class CreateCountryDTO
     {
         [Required]
         [StringLength(maximumLength: 50, ErrorMessage = "Country Name Is Too Long")]

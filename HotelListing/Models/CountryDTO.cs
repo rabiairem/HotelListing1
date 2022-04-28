@@ -2,7 +2,7 @@
 
 namespace HotelListing.Models
 {
-    public class CountryDTO : CreateCountyDTO
+    public class CountryDTO : CreateCountryDTO
     {
         public int Id { get; set; }
 
