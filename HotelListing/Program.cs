@@ -3,6 +3,7 @@ using HotelListing.Configurations;
 using HotelListing.Data;
 using HotelListing.IRepository;
 using HotelListing.Repository;
+using HotelListing.Services;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -25,7 +26,10 @@ builder.Logging.AddSerilog(logger);
 builder.Services.AddDbContext<DataBaseContext>(options => { options.UseSqlServer(builder.Configuration.GetConnectionString("sqlConnection")); });
 
 builder.Services.AddAuthentication();
+builder.Services.AddAuthorization();
+
 builder.Services.ConfigureIdentity();
+builder.Services.ConfigureJWT(builder.Configuration);
 
 builder.Services.AddCors(o =>
 {
@@ -38,6 +42,7 @@ builder.Services.AddCors(o =>
 builder.Services.AddAutoMapper(typeof(MapperInitializer));
 
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IAuthManager, AuthManager>();
 
 var app = builder.Build();
 
@@ -52,6 +57,7 @@ app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
