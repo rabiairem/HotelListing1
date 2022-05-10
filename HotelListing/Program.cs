@@ -1,3 +1,4 @@
+using AspNetCoreRateLimit;
 using HotelListing;
 using HotelListing.Configurations;
 using HotelListing.Data;
@@ -12,7 +13,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers().AddNewtonsoftJson(op => op.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+builder.Services.AddControllers(config =>
+{
+    config.CacheProfiles.Add("120SecondsDuration", new Microsoft.AspNetCore.Mvc.CacheProfile
+    {
+        Duration = 120
+    });
+}).AddNewtonsoftJson(op => op.SerializerSettings.ReferenceLoopHandling =
+Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
@@ -69,10 +77,19 @@ builder.Services.AddCors(o =>
        AllowAnyHeader());
 });
 
+builder.Services.AddResponseCaching();
 builder.Services.AddAutoMapper(typeof(MapperInitializer));
 
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAuthManager, AuthManager>();
+
+builder.Services.AddMemoryCache();//Store and keep track of req how many or from whom
+
+builder.Services.ConfigureRateLimiting();
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.ConfigureVersioning();
+builder.Services.ConfigureHttpCacheHeaders();
 
 var app = builder.Build();
 
@@ -82,10 +99,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.ConfigureExceptionHandler();
 
 app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
+app.UseResponseCaching();
+app.UseHttpCacheHeaders();
+app.UseIpRateLimiting();
 
 app.UseAuthentication();
 app.UseAuthorization();
