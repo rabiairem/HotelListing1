@@ -1,6 +1,8 @@
-﻿using HotelListing.Models;
+﻿
 
-namespace HotelListing.Services
+using HotelListing.Core.DTOs;
+
+namespace HotelListing.Core.Services
 {
     public interface IAuthManager
     {

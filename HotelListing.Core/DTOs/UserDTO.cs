@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace HotelListing.Models
+namespace HotelListing.Core.DTOs
 {
     public class LoginUserDTO
     {
-
         [Required]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }

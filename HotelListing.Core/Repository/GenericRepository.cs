@@ -1,12 +1,12 @@
-﻿using HotelListing.Data;
-using HotelListing.IRepository;
-using HotelListing.Models;
+﻿using HotelListing.Core.IRepository;
+using HotelListing.Core.Models;
+using HotelListing.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 using X.PagedList;
 
-namespace HotelListing.Repository
+namespace HotelListing.Core.Repository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
@@ -86,7 +86,7 @@ namespace HotelListing.Repository
         public void Update(T entity)
         {
             db.Attach(entity);
-            context.Entry<T>(entity).State = EntityState.Modified;
+            context.Entry(entity).State = EntityState.Modified;
         }
     }
 }

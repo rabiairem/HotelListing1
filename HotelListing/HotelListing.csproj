@@ -31,4 +31,9 @@
     <PackageReference Include="X.PagedList.Mvc.Core" Version="8.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HotelListing.Core\HotelListing.Core.csproj" />
+    <ProjectReference Include="..\HotelListing.Data\HotelListing.Data.csproj" />
+  </ItemGroup>
+
 </Project>

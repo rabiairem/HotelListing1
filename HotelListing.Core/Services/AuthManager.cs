@@ -1,12 +1,13 @@
-﻿using HotelListing.Data;
-using HotelListing.Models;
+﻿using HotelListing.Core.DTOs;
+using HotelListing.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace HotelListing.Services
+namespace HotelListing.Core.Services
 {
     public class AuthManager : IAuthManager
     {
@@ -68,7 +69,7 @@ namespace HotelListing.Services
         public async Task<bool> ValidateUser(LoginUserDTO userDTO)
         {
             _user = await _userManager.FindByNameAsync(userDTO.Email);
-            return (_user != null && await _userManager.CheckPasswordAsync(_user, userDTO.Password));
+            return _user != null && await _userManager.CheckPasswordAsync(_user, userDTO.Password);
         }
     }
 }

@@ -1,10 +1,10 @@
 using AspNetCoreRateLimit;
 using HotelListing;
-using HotelListing.Configurations;
+using HotelListing.Core.Configurations;
+using HotelListing.Core.IRepository;
+using HotelListing.Core.Repository;
+using HotelListing.Core.Services;
 using HotelListing.Data;
-using HotelListing.IRepository;
-using HotelListing.Repository;
-using HotelListing.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Serilog;
