@@ -24,6 +24,7 @@ namespace HotelListing
             var builder = services.AddIdentityCore<ApiUser>(q => q.User.RequireUniqueEmail = true);
 
             builder = new IdentityBuilder(builder.UserType, typeof(IdentityRole), services);
+            builder.AddTokenProvider("HotelListingApi", typeof(DataProtectorTokenProvider<ApiUser>));
             builder.AddEntityFrameworkStores<DataBaseContext>().AddDefaultTokenProviders();
         }
 
