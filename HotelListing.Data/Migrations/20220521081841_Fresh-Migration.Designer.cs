@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace HotelListing.Migrations
+namespace HotelListing.Data.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20220428105021_AddedIdentity1")]
-    partial class AddedIdentity1
+    [Migration("20220521081841_Fresh-Migration")]
+    partial class FreshMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -222,15 +222,15 @@ namespace HotelListing.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "befe54dd-fb95-4640-ada4-485d4ef77437",
-                            ConcurrencyStamp = "0393fcb8-90e8-45a7-af6f-a72458b3b37d",
+                            Id = "117b0b8f-e9c2-4308-af3d-ec439e9a8b68",
+                            ConcurrencyStamp = "191b3f6a-7ba1-4805-bd0c-564c175422a2",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "9eb5e27e-bf57-4f98-a891-6614cb8bb434",
-                            ConcurrencyStamp = "11142411-4679-48c0-8b06-8b824a21a1fb",
+                            Id = "e36e05ea-ea9f-4eab-b5db-b329c7bc10cd",
+                            ConcurrencyStamp = "dc09f345-6671-4b1a-a80f-342551a27476",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });

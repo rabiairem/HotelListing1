@@ -78,7 +78,7 @@ builder.Services.AddCors(o =>
 });
 
 builder.Services.AddResponseCaching();
-builder.Services.AddAutoMapper(typeof(MapperInitializer));
+builder.Services.ConfigureAutoMapper();
 
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAuthManager, AuthManager>();

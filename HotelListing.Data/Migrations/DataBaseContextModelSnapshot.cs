@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace HotelListing.Migrations
+namespace HotelListing.Data.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
     partial class DataBaseContextModelSnapshot : ModelSnapshot
@@ -220,15 +220,15 @@ namespace HotelListing.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b2b93da5-fd2d-4ce7-aad0-9f34c035be05",
-                            ConcurrencyStamp = "38a81b59-9f8b-43c3-8d22-8c6f2057dbc1",
+                            Id = "117b0b8f-e9c2-4308-af3d-ec439e9a8b68",
+                            ConcurrencyStamp = "191b3f6a-7ba1-4805-bd0c-564c175422a2",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "285a4262-4e2c-4ba3-9070-783095dbc18d",
-                            ConcurrencyStamp = "5bbf023f-7336-4341-b538-3031e419c771",
+                            Id = "e36e05ea-ea9f-4eab-b5db-b329c7bc10cd",
+                            ConcurrencyStamp = "dc09f345-6671-4b1a-a80f-342551a27476",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
